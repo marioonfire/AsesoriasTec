@@ -1,15 +1,45 @@
-const passpot = require('passport');
+const passport = require('passport');
 const LocalStrategy =require('passport-local').Strategy;
 const pool= require('../database');
 const helpers=require('../lib/helpers');
-var Carrera;
+var Carrera=null;
+const Kardex="";
+const foto="";
 
 const Alumno='Alumno';
-passpot.use('local.signup', new LocalStrategy({
+
+passport.use('local.signin', new LocalStrategy({
+      usernameField: 'Matricula',
+      passwordField: 'Contraseña',
+      passReqToCallback: true
+},async(req,Matricula,Contraseña, done)=>{
+    const rows= await pool.query("Select * from Usuarios where Matricula = ?",[Matricula]);
+    if(rows.length >0)
+    {
+        const user =rows[0];
+
+       const ValidPassword =await helpers.matchPassword(Contraseña,user.Contraseña)
+       if(ValidPassword){
+          done(null,user,req.flash('success','Bienvenido '+user.Matricula));
+       }
+       else
+       {
+         done(null,false,req.flash('message','Contraseña Invalida'));
+       }
+    }
+    else
+    {
+        return done(null, false, req.flash('message','El nombre de usuario no existe'));
+    }
+}));
+
+
+
+
+
+passport.use('local.signup', new LocalStrategy({
 	usernameField: 'NombredeUsuario',
 	passwordField: 'Contraseña',
-	CarreraField: 'Carreras',
-	CorreoField: 'Correo',
 	passReqToCallback: true
 }, async (req,NombredeUsuario,Contraseña,Tipo,Kardex,foto,done)=>{
     
@@ -25,15 +55,15 @@ passpot.use('local.signup', new LocalStrategy({
 
              rows.forEach(function(result){
                 Carrera=result.id_Carrera;
-                
+                console.log(Carrera);
                
              })
-        });
+        })
     
     const newUser={
          NombredeUsuario,
          Contraseña,
-         Carrera,
+         Carrera:Carrera,
          Correo,
          Tipo:Alumno,
          Kardex,
@@ -41,8 +71,12 @@ passpot.use('local.signup', new LocalStrategy({
          Matricula
     };
     
-      console.log(newUser);
+    //console.log(newUser);
     newUser.Contraseña= await helpers.encryptPassword(Contraseña);
-    const result = await pool.query('INSERT INTO Usuarios SET ?',[newUser]);
+    const result = await pool.query('INSERT INTO USUARIOS SET ?',[newUser]);
+    newUser.id_Usuario=result.insertid;
+    console.log(newUser)
+    return done(null,newUser);
 }));
+
 

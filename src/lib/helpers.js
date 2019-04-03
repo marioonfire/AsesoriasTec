@@ -9,12 +9,13 @@ helpers.encryptPassword= async(password) =>{
 };
 
 helpers.matchPassword=async(password,savePasword)=>{
+ 
   try{
-  await bcrypt.compare(password,savePasword);
+  return await bcrypt.compare(password,savePasword);
 }
 catch(e)
 {
-	console.log(e);
+	console.log(e)
 }
 };
 module.exports= helpers;
