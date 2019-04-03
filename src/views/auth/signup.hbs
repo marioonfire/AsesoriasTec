@@ -8,25 +8,25 @@
       			<div class="card-body">
       				<form action="/signup" method="POST">
       					<div class="form-group">
-      					   <input type="number" name="Matricula" placeholder="Matricula" class="form-control" autofocus>
+      					   <input type="number" name="Matricula" placeholder="Matricula" autocomplete="off" class="form-control" autofocus="" required="">
       					</div>
       					<div class="form-group">
-      					   <input type="text" name="NombredeUsuario" placeholder="Nombre" class="form-control">
+      					   <input type="text" name="NombredeUsuario" autocomplete="off" placeholder="Nombre" class="form-control" required="">
       					</div>
       					<div class="form-group">
-      						<input type="password" name="Contraseña" placeholder="Contraseña"class="form-control">
+      						<input type="password" name="Contraseña" autocomplete="off" placeholder="Contraseña"class="form-control" required="">
       					</div>
       					<div class="form-group">
-      						
-      						<select type="text" name="Carreras" class="form-control">
-      							{{#each carreras}}
+      						<select type="text" name="Carreras" class="form-control" required="">
+      							<option selected ="" disabled="" >Seleccione una carrera</option>
+								  {{#each carreras}}
       							<option >{{Nombre}}</option>
       							{{/each}}
       						</select>
       						
       					</div>
       					<div  class="form-group">
-      						<input type="email" name="Correo" placeholder="Correo"class="form-control">
+      						<input type="email" name="Correo" autocomplete="off" placeholder="Correo"class="form-control" required="">
       					</div>
       					<div>	
                 		    <button class="btn btn-success btn-block">

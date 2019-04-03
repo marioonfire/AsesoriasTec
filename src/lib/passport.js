@@ -43,6 +43,6 @@ passpot.use('local.signup', new LocalStrategy({
     
       console.log(newUser);
     newUser.Contraseña= await helpers.encryptPassword(Contraseña);
-    const result = await pool.query('INSERT INTO Usuarios SET ?',[newUser]);
+    const result = await pool.query('INSERT INTO USUARIOS SET ?',[newUser]);
 }));
 
