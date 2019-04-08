@@ -8,14 +8,16 @@ helpers.encryptPassword= async(password) =>{
   return hash;
 };
 
-helpers.matchPassword=async(password,savePasword)=>{
+helpers.matchPassword= async(password,savePasword)=>{
  
+  console.log(password)
+  console.log(savePasword)
   try{
-  return await bcrypt.compare(password,savePasword);
-}
-catch(e)
-{
-	console.log(e)
-}
+    return bcrypt.compare(password,savePasword);
+  }
+  catch(e)
+  {
+  	console.log(e)
+  }
 };
 module.exports= helpers;

@@ -5,7 +5,7 @@ const router = express.Router();
 const pool =require('../database');
 
 //Peticiones
-router.get('/add', (req,res) =>
+router.get('/add', islogged, (req,res) =>
 {
 	res.render('links/add');
 })
@@ -20,11 +20,11 @@ router.post('/add', async (req,res) =>
 	res.redirect('/links');
 });
 
-router.get('/secciones', (req,res) =>
+router.get('/secciones', islogged, (req,res) =>
 {
 	res.render('links/secciones');
 })
-router.post('/secciones', async (req,res) =>
+router.post('/secciones', islogged, async (req,res) =>
 {
 	const{Nombre}=req.body
 	const newseccion ={
@@ -35,18 +35,26 @@ router.post('/secciones', async (req,res) =>
 	res.redirect('/secciones');
 });
 
-router.get('/asesorias', async (req,res)=>
+router.get('/asesorias', islogged, async (req,res)=>
 {
-  const secciones=await pool.query('Select * from secciones');
+  const secciones=await pool.query('Select * from Secciones');
   res.render('links/asesorias',{ secciones});
 });
 
 
-router.get('/', async (req,res)=>
+router.get('/', islogged, async (req,res)=>
 {
   const carreras=await pool.query('Select * from CARRERAS');
   res.render('links/listCarreras',{ carreras });
 });
+
+function islogged(req,res,next){
+    if(req.isAuthenticated()){
+        return next();
+    }else{
+        return res.redirect('/login');
+    }
+}
 
 
 

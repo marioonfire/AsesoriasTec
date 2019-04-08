@@ -25,7 +25,11 @@
 
 </head>
 <body>
+      {{#if user}}
+       {{> navigationLogin}}
+      {{else}}
        {{> navigation}}
+      {{/if}}
        {{> message }}
      {{{ body }}}
      {{!-- SCRIPTS --}}
