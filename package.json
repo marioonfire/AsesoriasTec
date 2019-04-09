@@ -4,13 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon  src/"
+    "dev": "nodemon src/index.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",
+    "body-parser": "^1.18.3",
     "connect-flash": "^0.1.1",
     "express": "^4.16.4",
     "express-handlebars": "^3.0.2",
@@ -24,6 +25,6 @@
     "timeago.js": "^4.0.0-beta.2"
   },
   "devDependencies": {
-    "nodemon": "^1.18.10"
+    "nodemon": "^1.18.11"
   }
 }

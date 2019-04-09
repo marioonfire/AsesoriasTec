@@ -20,7 +20,7 @@ passport.use('local.signin', new LocalStrategy({
 
        const ValidPassword =await helpers.matchPassword(Contraseña,user.Contraseña)
        if(ValidPassword){
-          done(null,user,req.flash('success','Bienvenido '+user.Matricula));
+          done(null,user);
        }
        else
        {
