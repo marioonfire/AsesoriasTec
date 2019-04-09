@@ -9,32 +9,57 @@ const pool =require('../database');
 router.get('/signup', async (req,res)=>
 {
   const carreras=await pool.query('Select * from CARRERAS');
-  res.render('auth/signup',{ carreras });
+  res.render('auth/signup',{ carreras , user: true});
 });
 
 
-router.post('/signup', passport.authenticate('local.signup',{
+router.post('/signup', passport.authenticate('local-signup',{
          succesRedirect: '/profile',
          failureRedirect: '/signup',
          failureFlash: true
-}));
-
-
-router.get('/login', (req,res)=>{
-    res.render('auth/login');
-});
-
-router.post('/login',(req,res, next)=>{
-     passport.authenticate('local.signin',{
-     	succesRedirect: '/profile',
-     	failureRedirect: '/login',
-     	failureFlash:true
-     })(req,res,next);
+}), function(req, res, info){
+  res.redirect('/login');
 });
 
 
-router.get('/profile',(req,res)=>{
-	res.send('this is you Profile')
+router.get('/login',inLogged, (req,res)=>{
+    res.render('auth/login',{user: true});
 });
+
+router.post('/login', passport.authenticate('local-signin',{
+    succesRedirect: '/profile',
+    failureRedirect: '/login',
+    failureFlash:true
+  }), function(req, res, info){
+      res.redirect('/profile');
+  }
+);
+
+
+router.get('/profile', islogged, (req,res)=>{
+	res.render('auth/profile');
+});
+
+router.get('/logout', (req,res)=>{
+  req.logout();
+  req.user = null;
+  res.redirect('/')
+});
+
+function islogged(req,res,next){
+    if(!req.isAuthenticated()){
+      return res.redirect('/login');
+    }else{
+      return next();
+    }
+}
+
+function inLogged(req,res,next){
+  if(!req.isAuthenticated()){
+    return next();
+  }else{
+    return res.redirect('/profile');
+  }
+}
 
 module.exports = router;
