@@ -5,8 +5,18 @@
       			<div class="card-header">
       				<h3>Perfil</h3>
       			</div>
+
+                        <picture>
+                         <img src="/image/profile.jpg">
+                         </picture>
+
       			<div class="card-body">
-      				<label for="">Iniciada</label>
+                              {{#usuario}}
+                              <label>{{usuario.matricula}}</label>
+                              <label>{{usuario.NombredeUsuario}}</label>
+                              <label>{{usuario.Correo}}</label>
+      				
+                              {{/usuario}}
       			</div>
       		</div>
       	</div>

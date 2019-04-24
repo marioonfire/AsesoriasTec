@@ -45,8 +45,17 @@ router.get('/asesorias', islogged, async (req,res)=>
 router.get('/', islogged, async (req,res)=>
 {
   const carreras=await pool.query('Select * from CARRERAS');
-  res.render('links/listCarreras',{ carreras });
+  res.render('links/listCarreras',{carreras});
 });
+
+
+router.get('/listAsesorias', islogged, async (req,res)=>
+{
+	
+  const Asesorias=await pool.query('Select * from asesorias');
+  res.render('links/listAsesorias',{ Asesorias });
+});
+
 
 function islogged(req,res,next){
     if(req.isAuthenticated()){

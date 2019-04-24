@@ -37,7 +37,8 @@ router.post('/login', passport.authenticate('local-signin',{
 
 
 router.get('/profile', islogged, (req,res)=>{
-	res.render('auth/profile');
+  const usuario =  {usuario:req.user}
+	res.render('auth/profile',{usuario});
 });
 
 router.get('/logout', (req,res)=>{
