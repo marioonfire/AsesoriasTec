@@ -1,6 +1,13 @@
 create database Asesoria;
 use Asesoria;
 
+CREATE TABLE CARRERAS
+(
+  id_Carrera int(11) not null Auto_increment,
+  Nombre varchar(50) not null,
+  Primary key (id_Carrera)
+);
+
 CREATE TABLE USUARIOS(
   id_Usuario int(11) not null Auto_Increment,
   NombredeUsuario varchar(20) not null,
@@ -15,20 +22,12 @@ CREATE TABLE USUARIOS(
   CONSTRAINT FK_Usuario_Carrera Foreign key (Carrera) References CARRERAS(id_Carrera)
 );
 
-
-CREATE TABLE CARRERAS
-(
-  id_Carrera int(11) not null Auto_increment,
-  Nombre varchar(50) not null,
-  Primary key (id_Carrera)
-);
 create table Secciones
 (
   id_Seccion int(11) not null auto_increment,
   Nombre varchar(50)not null,
   primary key(id_Seccion)
-)
-
+);
 
 create table Asesorias
 (
@@ -45,7 +44,7 @@ create table Asesorias
   primary key(id_Asesoria),
   CONSTRAINT FK_Asesoria_Asesor2 Foreign key (Asesor) References Usuarios(id_Usuario),
   CONSTRAINT FK_Asesoria_Secciones2 Foreign key (Seccion) References Secciones(id_Seccion)
-)
+);
 
 create table Tareas
 (
@@ -55,7 +54,8 @@ create table Tareas
  Descripcion varchar(50)not null,
  primary key(id_Tareas),
  CONSTRAINT FK_Tareas_Asesoria Foreign key (Asesoria) References Asesorias(id_Asesoria) 
-)
+);
+
 create table Tareas_Alumnos(
 id_Tareas_Alumnos int(11) not null auto_increment primary key,
 Tarea int(11) not null,
@@ -64,8 +64,7 @@ Archivo varchar(320)not null,
 Fechar datetime not null default Current_timestamp,
  CONSTRAINT FK_Tarea_Alumnos Foreign key (Alumno) References Usuarios(id_Usuario),
  CONSTRAINT FK_Tarea_Tareas Foreign key (Tarea) References Tareas(id_Tareas)
-)
-
+);
 
 create table Asesorias_Alumnos(
   id_Asesorias_Alumnos int(11)  not null auto_increment,
@@ -76,7 +75,7 @@ create table Asesorias_Alumnos(
  primary key(id_Asesorias_Alumnos),
  CONSTRAINT FK_Asesoria_Alumnos Foreign key (Alumno) References Usuarios(id_Usuario),
   CONSTRAINT FK_Asesoria_Asesoria Foreign key (Asesoria) References Asesorias(id_Asesoria)  
-)
+);
 
 create table solicitudes_asesor(
   id_Solicitudes int(11)  auto_increment not null,
@@ -88,4 +87,4 @@ create table solicitudes_asesor(
     primary key(id_Solicitudes),
     constraint FK_solicitudes_usuario FOREIGN KEY (usuario) REFERENCES Usuarios(id_usuario),
     constraint FK_solicitudes_Asesoria FOREIGN KEY (asesoria) REFERENCES Asesorias(id_Asesoria)
-)
+);
