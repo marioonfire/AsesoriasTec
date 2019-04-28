@@ -5,15 +5,34 @@
              <div class="card-body">
                <form action="/links/asesorias" method="POST">
                	    <div class="form-group">
+
                		   <input type="text" class="form-control" name="Nombre" placeholder="Nombre de Usuario" autofocus>
                 	</div >
                 	<div class="form-group">
+
+               		   <input type="text" class="form-control" name="Nombre" placeholder="Nombre de asesoria" autofocus>
+                	</div >
+                	<div class="form-group">
+                		<textarea name="Descripcion" rows="2" class="form-control" placeholder="Descripcion"></textarea>
+                	</div>
+					<div class="form-group">
+						Tutor
+					</div>
+					<div class="form-group">
+                		 <input type="Name" name="Tutor" class="form-control" readonly />
+                	</div>
+                	<div class="form-group">
+
                 		Selecciona una Categoria
                 	</div>
                 	<div class="form-group">
                		   <select type="text" name="Carreras" class="form-control">
       							{{#each secciones}}
+
       							<option >{{Nombre}}</option>
+
+      							<option value="{{id_Seccion}}">{{Nombre}}</option>
+
       							{{/each}}
       						</select>
                 	</div>
@@ -41,9 +60,11 @@
                 	<div class="form-group">
                 		<input type="time" name="Horario_Fin" class="form-control">
                 	</div>
+
                 	<div class="form-group">
                 		<textarea name="Descripcion" rows="2" class="form-control" placeholder="Descripcion"></textarea>
                 	</div>
+
                 		<button class="btn btn-success btn-block">
                 			Guardar
                 		</button>

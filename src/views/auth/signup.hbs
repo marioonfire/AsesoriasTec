@@ -1,41 +1,44 @@
 <div class="container p-4">
       <div class="row">
-      	<div class="col-md-4 mx-auto">
-      		<div class="card text-center">
-      			<div class="card-header">
-      				<h3>SignUp</h3>
-      			</div>
-      			<div class="card-body">
-      				<form action="/signup" method="POST">
-      					<div class="form-group">
-      					   <input type="number" name="Matricula" placeholder="Matricula" autocomplete="off" class="form-control" autofocus="" required="">
-      					</div>
-      					<div class="form-group">
-      					   <input type="text" name="NombredeUsuario" autocomplete="off" placeholder="Nombre" class="form-control" required="">
-      					</div>
-      					<div class="form-group">
-      						<input type="password" name="Contraseña" autocomplete="off" placeholder="Contraseña"class="form-control" required="">
-      					</div>
-      					<div class="form-group">
-      						<select type="text" name="Carreras" class="form-control" required="">
-      							<option selected ="" disabled="" >Seleccione una carrera</option>
-								  {{#each carreras}}
-      							<option value="{{ id_Carrera}}" >{{Nombre}}</option>
-      							{{/each}}
-      						</select>
-      						
-      					</div>
-      					<div  class="form-group">
-      						<input type="email" name="Correo" autocomplete="off" placeholder="Correo"class="form-control" required="">
-      					</div>
-      					<div>	
-                		    <button class="btn btn-success btn-block">
-                			    Registrarte
-                		    </button>
-      					</div>
-      				</form>
-      			</div>
-      		</div>
-      	</div>
+            <div class="col-md-4 mx-auto">
+                  <div class="card text-center">
+                        <div class="card-header">
+                              <h3>SignUp</h3>
+                        </div>
+                        <div class="card-body">
+                              <form action="/signup" method="POST">
+                                    <div class="form-group">
+                                       <input type="number" name="Matricula" placeholder="Matricula" autocomplete="off" class="form-control" autofocus="" required="">
+                                    </div>
+                                    <div class="form-group">
+                                       <input type="text" name="NombredeUsuario" autocomplete="off" placeholder="Nombre" class="form-control" required="">
+                                    </div>
+                                    <div class="form-group">
+                                          <input type="password" name="Contraseña" autocomplete="off" placeholder="Contraseña"class="form-control" required="">
+                                    </div>
+
+
+                                    <div class="input-field col s12">
+                                       <select>
+                                          <option value="" disabled selected>Seleccione una carrera</option>
+                                          {{#each carreras}}
+                                                <option value="{{ id_Carrera}}" >{{Nombre}}</option>
+                                                {{/each}}
+                                       </select>
+                                       <label>Materialize Select</label>
+                                    </div>
+                                    
+                                    <div  class="form-group">
+                                          <input type="email" name="Correo" autocomplete="off" placeholder="Correo"class="form-control" required="">
+                                    </div>
+                                    <div> 
+                            <button class="btn btn-success btn-block">
+                                  Registrarte
+                            </button>
+                                    </div>
+                              </form>
+                        </div>
+                  </div>
+            </div>
       </div>
 </div>

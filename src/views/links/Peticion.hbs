@@ -1,0 +1,33 @@
+<div class="container p-4">
+   <div class= "row">
+       <div class ="col-md-4 mx-auto">
+           <div class="card ">
+             <div class="card-body">
+               <form action="/links/Peticion" method="POST">
+
+                <div class="form-group">
+                  <select type="text" name="Secciones" class="form-control" required="">
+                    <option selected ="" disabled="" >Seleccione una Materia</option>
+                  {{#each Materias}}
+                    <option value="{{ id_Seccion}}" >{{Nombre}}</option>
+                    {{/each}}
+                  </select>
+                  
+                </div>
+               	    <div class="form-group">
+                      <input type="time" name="Hora_inicio" class="form-control" placeholder="Hora Inicio">
+                    </div>
+
+                    <div class="form-group">
+                      <input type="time" name="Hora_fin" class="form-control" placeholder="Hora Fin">
+                    </div>
+
+                		<button class="btn btn-success btn-block">
+                			Guardar
+                		</button>
+                	</div>
+               </form>
+           </div>
+       </div>
+   </div>
+</div>
