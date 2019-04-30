@@ -1,11 +1,11 @@
 <nav>
-  <div class="nav-wrapper blue darken-3">
+  <div class="nav-wrapper green darken-4">
     <a href="#!" class="brand-logo">Logo</a>
     <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
     <ul class="right hide-on-med-and-down">
 {{#if user}}
       <li><a href="/">Inicio</a></li>
-      <li><a href="/asesorias">Asesorias</a></li>
+      <li><a href="/links/listasesorias">Asesorias</a></li>
       <li><a href="/solicitudes">Solicitudes</a></li>
       <li><a href="/logout">Salir</a></li>
 {{else}}
@@ -16,37 +16,15 @@
   </div>
 </nav>
 
-<<<<<<< HEAD
-  <nav>
-    <div class="nav-wrapper blue darken-3">
-      <a href="#!" class="brand-logo">Logo</a>
-      <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-      <ul class="right hide-on-med-and-down">
-        <li><a href="/">Inicio</a></li>
-        <li><a href="/links/listAsesorias">Asesorias</a></li>
-        <li><a href="/solicitudes">Solicitudes</a></li>
-        <li><a href="/logout">Salir</a></li>
-      </ul>
-    </div>
-  </nav>
-
-  <ul class="sidenav" id="mobile-demo">
-    <li><a href="/">Inicio</a></li>
-    <li><a href="/asesorias">Asesorias</a></li>
-    <li><a href="/solicitudes">Solicitudes</a></li>
-    <li><a href="/logout">Salir</a></li>
-  </ul>
-=======
 <ul class="sidenav" id="mobile-demo">
   {{#if user}}
   <li><a href="/">Inicio</a></li>
   <li><a href="/asesorias">Asesorias</a></li>
-  <li><a href="/solicitudes">Solicitudes</a></li>
+  <li><a href="/links/Peticion">Solicitudes</a></li>
   <li><a href="/logout">Salir</a></li>
 {{else}}
   <li><a href="/login">Entrar</a></li>
   <li><a href="/signup">Registrarse</a></li>
 {{/if}}
 </ul>
-          
->>>>>>> 3cf58b4ce901b57363b87b8f9a951026d4ec5dd0
+

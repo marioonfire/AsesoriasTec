@@ -25,13 +25,32 @@ router.post('/add', async (req,res) =>
 //Peticiones
 router.get('/Peticion', islogged, async (req,res)=>
 {
+
 	const Materias=await pool.query('Select * from Secciones');
-	res.render('links/Peticion',{Materias});
+	res.render('links/Peticion',{Materias,user: req.user});
 })
 
+router.post('/Peticion', islogged, async(req,res)=>
+{
+   const usuario=req.user.id_Usuario;
+   const  {Secciones}=req.body;
+   const {Hora_inicio}= req.body;
+   const {Hora_fin}=req.body;
+   const Estatus= "En espera";
+   const newPeticion={
+       usuario,
+       Materia:parseInt(Secciones),
+       Hora_inicio,
+       Hora_fin,
+       Estatus
+   }
+   await pool.query('INSERT INTO solicitudes_asesoria SET ?',[newPeticion]);
+	req.flash('success','Peticion saved successfully');
+	res.redirect('/secciones');
+});
 
 
-//Seccuibes
+//Secciones
 router.get('/secciones', islogged, (req,res) =>
 {
 	res.render('links/secciones');
@@ -43,23 +62,22 @@ router.post('/secciones', islogged, async (req,res) =>
 		Nombre
 	};
 
-	await pool.query('INSERT INTO SECCIONES SET ?',[newseccion]);
 	await pool.query('INSERT INTO Secciones SET ?',[newseccion]);
 	req.flash('success','Link saved successfully');
-	res.redirect('/secciones');
+	res.redirect('/links/secciones');
 });
 
 router.get('/asesorias', islogged, async (req,res)=>
 {
   const secciones=await pool.query('Select * from Secciones');
-  res.render('links/asesorias',{ secciones});
+  res.render('links/asesorias',{ secciones ,user: req.user});
 });
 
 
 router.get('/', islogged, async (req,res)=>
 {
   const carreras=await pool.query('Select * from CARRERAS');
-  res.render('links/listCarreras',{carreras});
+  res.render('links/listCarreras',{carreras,user: req.user});
 });
 
 
@@ -67,13 +85,13 @@ router.get('/listAsesorias', islogged, async (req,res)=>
 {
 	
   const Asesorias=await pool.query('Select * from asesorias');
-  res.render('links/listAsesorias',{ Asesorias });
+  res.render('links/listAsesorias',{ Asesorias ,user: req.user});
 });
 
 router.get('/asesorias', islogged,async(req,res)=>
 {
   const secciones=await pool.query('Select * from asesorias');
-  res.render('links/listAsesorias',{ secciones});
+  res.render('links/listAsesorias',{ secciones ,user: req.user});
 });
 
 router.post('/asesorias', islogged, async (req,res)=>
@@ -89,7 +107,7 @@ router.post('/asesorias', islogged, async (req,res)=>
 router.get('/', islogged, async (req,res)=>
 {
   const carreras=await pool.query('Select * from CARRERAS');
-  res.render('links/listCarreras',{ carreras });
+  res.render('links/listCarreras',{ carreras ,user: req.user});
 });
 
 

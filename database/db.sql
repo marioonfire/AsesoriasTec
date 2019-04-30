@@ -77,16 +77,16 @@ create table Asesorias_Alumnos(
   CONSTRAINT FK_Asesoria_Asesoria Foreign key (Asesoria) References Asesorias(id_Asesoria)  
 );
 
-create table solicitudes_asesor(
+create table solicitudes_asesoria(
   id_Solicitudes int(11)  auto_increment not null,
     usuario int(11) not null,
-    asesoria int(11) not null,
+    Materia int(11) not null,
+  Hora_inicio time,
+    Hora_fin time,
     fechaCreacion datetime default current_timestamp,
     fechaRespuesta datetime,
-  estatus varchar(20),
+    estatus varchar(20),
     primary key(id_Solicitudes),
     constraint FK_solicitudes_usuario FOREIGN KEY (usuario) REFERENCES Usuarios(id_usuario),
-    constraint FK_solicitudes_Asesoria FOREIGN KEY (asesoria) REFERENCES Asesorias(id_Asesoria)
+    constraint FK_solicitudes_seccion FOREIGN KEY (Materia) REFERENCES Secciones(id_Seccion)
 );
-alter table solicitudes_asesor add fecha_inicio time 
-alter table solicitudes_asesor add fecha_fin time
