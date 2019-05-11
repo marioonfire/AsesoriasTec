@@ -4,7 +4,7 @@
            <div class="card ">
              <div class="card-body">
                <form action="/links/Peticion" method="POST">
-
+                 <center><h2>Peticion</h2></center>
                 <div class="form-group">
                   <select type="text" name="Secciones" class="form-control" required="">
                     <option selected ="" disabled="" >Seleccione una Materia</option>
@@ -12,19 +12,19 @@
                     <option value="{{ id_Seccion}}" >{{Nombre}}</option>
                     {{/each}}
                   </select>
-                  
+                  <H6>Hora Inicio</H6>
                 </div>
                	    <div class="form-group">
                       <input type="time" name="Hora_inicio" class="form-control" placeholder="Hora Inicio">
                     </div>
-
+                   <H6>Hora Fin</H6>
                     <div class="form-group">
                       <input type="time" name="Hora_fin" class="form-control" placeholder="Hora Fin">
                     </div>
 
-                		<button class="btn btn-success btn-block">
+                	<center>	<button class="btn btn-success btn-block">
                 			Guardar
-                		</button>
+                		</button></center>
                 	</div>
                </form>
            </div>

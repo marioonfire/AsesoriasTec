@@ -3,28 +3,25 @@
 		{{#each Asesorias}}
 		  
     <div class="col s12 m3">
-      <div class="card">
+      <div class="card" >
         <div class="card-image">
           <img src="/image/paisaje2.png">
-          <span class="card-title">{{Nombre}}</span>
+          <span value="{{ id_Asesoria}}" class="card-title">{{Nombre}}</span>
         </div>
         <div class="card-content">
           <p>{{Horario_Inicio}}</p>
-        </div>
-        <div class="card-content">
           <p>{{Horario_Fin}}</p>
-        </div>
-         <div class="card-content">
           <p>{{Fecha_Inicio}}</p>
-        </div>
-        <div class="card-content">
           <p>{{Fecha_Fin}}</p>
-        </div>
-        <div class="card-content">
           <p>{{Descripcion}}</p>
         </div>
         <div class="card-action">
-          <a href="#">Registrate</a>
+          <form action="/links/listAsesorias" method="POST" class="">
+          <input class="hide" name="id_Asesoria" value="{{ id_Asesoria}}"/>
+          <button id="btn_{{id_Asesoria}}"class="btn-floating " ><i class="material-icons">add</i></button>
+        </form>
+
+          <h6>Inscribete</h6>
         </div>
       </div>
     </div>
