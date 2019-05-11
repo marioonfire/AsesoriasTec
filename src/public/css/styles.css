@@ -1,0 +1,72 @@
+/* COLOR VERDE DEL TITULO  */
+.Rheader{
+    color:green;
+}
+
+/* CONTROL DEL MENU cuando se ve y cuando no */
+body > header, body > main {
+    padding-left: 300px;
+}
+
+/* NAV Style */
+nav {
+    height: 110px !important;
+}
+nav > .container{
+    width: 100% !important;
+    padding-top: 22px;
+}
+nav  h1 {
+    font-weight: 300;
+}
+nav .header {
+    margin: 0 !important;
+}
+
+.sidenav > li a{
+    color: white;
+}
+
+/* IMAGEN NAV */
+#logo-container{
+    height: auto!important;
+}
+#logo-container > img {
+    margin-left: calc(50% - 70px);
+}
+/* NAV style */
+/* BORDES DELGADOS */
+.top-nav{
+    height: 110px;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    border-bottom: 1px solid rgba(0,0,0,0.14);
+    background-color: transparent;
+}
+.sidenav{
+    overflow: hidden;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    border-right: 1px solid rgba(0,0,0,0.14);
+}
+.iconMenu{
+    position: absolute;
+    text-align: center;
+    height: 48px;
+    width: 48px;
+    top: 28px;
+    float: none;
+    margin-left: 1.5rem;
+    font-size: 36px;
+    z-index: 2;
+}
+.iconMenu > a{
+    border: 0px !important;
+}
+/* SALTOS */
+@media (max-width: 992px ){
+    /* quita el margen cuando el menu aparece */
+    body > header, body > main {
+        padding-left: 0px;
+    }
+}

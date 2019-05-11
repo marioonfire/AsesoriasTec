@@ -1,30 +1,30 @@
-<nav>
-  <div class="nav-wrapper green darken-4">
-    <a href="#!" class="brand-logo">Logo</a>
-    <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-    <ul class="right hide-on-med-and-down">
-{{#if user}}
-      <li><a href="/">Inicio</a></li>
-      <li><a href="/links/listasesorias">Asesorias</a></li>
-      <li><a href="/solicitudes">Solicitudes</a></li>
-      <li><a href="/logout">Salir</a></li>
-{{else}}
-      <li><a href="/login">Entrar</a></li>
-      <li><a href="/signup">Registrarse</a></li>
-{{/if}}
-    </ul>
-  </div>
-</nav>
+<header>
+  <nav class="top-nav white">
+    <div class="container">
+      <div class="nav-wrapper">
+        <div class="row">
+          <div class="col s12 m10 offset-m1">
+            <h1 class="Rheader header">PruebA</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="iconMenu container"><a  data-target="mobile-demo" class="top-nav sidenav-trigger full hide-on-large-only"><i class="material-icons Rheader">menu</i></a></div>
 
-<ul class="sidenav" id="mobile-demo">
+<ul class="sidenav sidenav-fixed green" id="mobile-demo">
+  <li class="white"><a id="logo-container" class="brand-logo">
+    <img src="/image/logo_ITT1.png" alt="" style="max-width: 140px;" width="140" border="0">
+  </a></li>
   {{#if user}}
   <li><a href="/">Inicio</a></li>
   <li><a href="/asesorias">Asesorias</a></li>
   <li><a href="/links/Peticion">Solicitudes</a></li>
   <li><a href="/logout">Salir</a></li>
-{{else}}
+  {{else}}
   <li><a href="/login">Entrar</a></li>
   <li><a href="/signup">Registrarse</a></li>
-{{/if}}
+  {{/if}}
 </ul>
 
