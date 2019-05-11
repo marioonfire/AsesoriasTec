@@ -1,0 +1,146 @@
+html {
+    font-family: "Roboto","Helvetica","Arial",sans-serif;
+}
+/* 
+nav{
+    background-image: url("http://tectijuana.edu.mx/wp-content/uploads/2018/12/headernuevo2018-1.jpg");
+} */
+
+/* COLOR VERDE DEL TITULO  */
+.Rheader{
+    color:white;
+}
+
+/* CONTROL DEL MENU cuando se ve y cuando no */
+body > header, body > main {
+    padding-left: 225px;
+}
+
+.sidenav{
+    width: 225px !important;
+}
+
+/* NAV Style */
+nav {
+    height: 110px !important;
+}
+nav > .container{
+    width: 100% !important;
+    padding-top: 22px;
+}
+nav  h1 {
+    font-weight: 300;
+}
+nav .header {
+    margin: 0 !important;
+}
+.sidenav > li a, .sidenav > li i{
+    color: rgb(88, 179, 78);
+}
+
+
+/* IMAGEN NAV */
+#logo-container{
+    height: auto!important;
+}
+#logo-container > img {
+    margin-left: calc(50% - 70px);
+}
+/* NAV style */
+/* BORDES DELGADOS */
+.top-nav{
+    height: 110px;
+    /* -webkit-box-shadow: none; */
+    /* box-shadow: none; */
+    /* border-bottom: 1px solid rgba(0,0,0,0.14); */
+    background-color: transparent;
+}
+.sidenav{
+    overflow: hidden;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    border-right: 1px solid rgba(0,0,0,0.14);
+}
+.iconMenu{
+    position: absolute;
+    text-align: center;
+    height: 48px;
+    width: 48px;
+    top: 28px;
+    float: none;
+    margin-left: 1.5rem;
+    font-size: 36px;
+    z-index: 2;
+}
+.iconMenu > a{
+    border: 0px !important;
+}
+
+
+main > .container{
+    width: 100%;
+}
+
+/* COLOR DEL INPUT */
+input:not([type]), input[type="text"]:not(.browser-default), input[type="password"]:not(.browser-default), input[type="email"]:not(.browser-default), input[type="url"]:not(.browser-default), input[type="time"]:not(.browser-default), input[type="date"]:not(.browser-default), input[type="datetime"]:not(.browser-default), input[type="datetime-local"]:not(.browser-default), input[type="tel"]:not(.browser-default), input[type="number"]:not(.browser-default), input[type="search"]:not(.browser-default), textarea.materialize-textarea {
+    border-bottom: 1px solid rgb(102, 175, 105);
+}
+input:not([type]):focus:not([readonly]),
+input[type=text]:not(.browser-default):focus:not([readonly]),
+input[type=password]:not(.browser-default):focus:not([readonly]),
+input[type=email]:not(.browser-default):focus:not([readonly]),
+input[type=url]:not(.browser-default):focus:not([readonly]),
+input[type=time]:not(.browser-default):focus:not([readonly]),
+input[type=date]:not(.browser-default):focus:not([readonly]),
+input[type=datetime]:not(.browser-default):focus:not([readonly]),
+input[type=datetime-local]:not(.browser-default):focus:not([readonly]),
+input[type=tel]:not(.browser-default):focus:not([readonly]),
+input[type=number]:not(.browser-default):focus:not([readonly]),
+input[type=search]:not(.browser-default):focus:not([readonly]),
+textarea.materialize-textarea:focus:not([readonly]) {
+border-bottom:1px solid #4CAF50;
+-webkit-box-shadow:0 1px 0 0 #4CAF50;
+box-shadow:0 1px 0 0 #4CAF50;
+}
+input:not([type]):focus:not([readonly])+label,
+input[type=text]:not(.browser-default):focus:not([readonly])+label,
+input[type=password]:not(.browser-default):focus:not([readonly])+label,
+input[type=email]:not(.browser-default):focus:not([readonly])+label,
+input[type=url]:not(.browser-default):focus:not([readonly])+label,
+input[type=time]:not(.browser-default):focus:not([readonly])+label,
+input[type=date]:not(.browser-default):focus:not([readonly])+label,
+input[type=datetime]:not(.browser-default):focus:not([readonly])+label,
+input[type=datetime-local]:not(.browser-default):focus:not([readonly])+label,
+input[type=tel]:not(.browser-default):focus:not([readonly])+label,
+input[type=number]:not(.browser-default):focus:not([readonly])+label,
+input[type=search]:not(.browser-default):focus:not([readonly])+label,
+textarea.materialize-textarea:focus:not([readonly])+label {
+color:#4CAF50;
+}
+.dropdown-content li > a, .dropdown-content li > span {
+font-size: 16px;
+color: #4CAF50;
+display: block;
+line-height: 22px;
+padding: 14px 16px;
+}
+
+/* COLOR DEL INPUT */
+
+/* CUSTOM COLORS */
+.greenAqua{
+    background-color: #009688;
+}
+
+
+/* SALTOS */
+@media (max-width: 992px ){
+    /* quita el margen cuando el menu aparece */
+    body > header, body > main {
+        padding-left: 0px;
+    }
+
+    body, header{
+        text-align: center;
+    }
+}

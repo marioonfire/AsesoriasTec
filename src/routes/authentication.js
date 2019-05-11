@@ -9,7 +9,7 @@ const pool =require('../database');
 router.get('/signup', async (req,res)=>
 {
   const carreras=await pool.query('Select * from CARRERAS');
-  res.render('auth/signup',{ carreras , user: undefined});
+  res.render('auth/signup',{ title:"Registrate", carreras , user: undefined});
 });
 
 
@@ -23,7 +23,7 @@ router.post('/signup', passport.authenticate('local-signup',{
 
 
 router.get('/login',inLogged, (req,res)=>{
-    res.render('auth/login',{user: undefined});
+    res.render('auth/login',{title: "Iniciar sesión",user: undefined});
 });
 
 router.post('/login', passport.authenticate('local-signin',{
@@ -39,7 +39,7 @@ router.post('/login', passport.authenticate('local-signin',{
 router.get('/profile', islogged, (req,res)=>{
 
   const usuario =  {usuario:req.user}
-	res.render('auth/profile',{user:req.user,usuario});
+	res.render('auth/profile',{user:req.user,usuario, title:"Perfil"});
 
 	
 
