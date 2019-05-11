@@ -1,10 +1,10 @@
 <header>
-  <nav class="top-nav white">
+  <nav class="top-nav green lighten-1 ">
     <div class="container">
       <div class="nav-wrapper">
         <div class="row">
           <div class="col s12 m10 offset-m1">
-            <h1 class="Rheader header">PruebA</h1>
+            <h1 class="Rheader header">{{title}}</h1>
           </div>
         </div>
       </div>
@@ -13,18 +13,20 @@
 </header>
 <div class="iconMenu container"><a  data-target="mobile-demo" class="top-nav sidenav-trigger full hide-on-large-only"><i class="material-icons Rheader">menu</i></a></div>
 
-<ul class="sidenav sidenav-fixed green" id="mobile-demo">
+<ul class="sidenav sidenav-fixed grey lighten-3" id="mobile-demo">
   <li class="white"><a id="logo-container" class="brand-logo">
     <img src="/image/logo_ITT1.png" alt="" style="max-width: 140px;" width="140" border="0">
   </a></li>
+  <br>
   {{#if user}}
-  <li><a href="/">Inicio</a></li>
-  <li><a href="/asesorias">Asesorias</a></li>
-  <li><a href="/links/Peticion">Solicitudes</a></li>
-  <li><a href="/logout">Salir</a></li>
+  <li><a href="/">Inicio<i class="material-icons left">home</i></a></li>
+  <li><a href="/profile">Perfil<i class="material-icons left">face</i></a></li>
+  <li><a href="/asesorias">Asesorias<i class="material-icons left">group</i></a></li>
+  <li><a href="/links/Peticion">Solicitudes<i class="material-icons left">group_add</i></a></li>
+  <li><a href="/logout">Salir<i class="material-icons left">exit_to_app</i></a></li>
   {{else}}
-  <li><a href="/login">Entrar</a></li>
-  <li><a href="/signup">Registrarse</a></li>
+  <li><a href="/login">Entrar<i class="material-icons left">home</i></a></li>
+  <li><a href="/signup">Registrarse<i class="material-icons left">person_add</i></a></li>
   {{/if}}
 </ul>
 

@@ -21,12 +21,16 @@
      <link rel="stylesheet" href="/css/styles.css">
 
 </head>
-<body>
+<body class="">
       {{> navigation}}
        {{> message }}
       <main>
         <div class="container">
-           {{{ body }}}
+          <div class="row">
+            <div class="col s12 m8 offset-m1">
+              {{{ body }}}
+            </div>
+          </div>
         </div>
       </main>
      {{!-- SCRIPTS --}}
