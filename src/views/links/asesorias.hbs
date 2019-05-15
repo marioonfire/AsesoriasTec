@@ -6,36 +6,34 @@
                <form action="/links/asesorias" method="POST">
                	    <div class="form-group">
 
-               		   <input type="text" class="form-control" name="Nombre" placeholder="Nombre de Usuario" autofocus>
-                	</div >
-                	<div class="form-group">
+               		  
 
-               		   <input type="text" class="form-control" name="Nombre" placeholder="Nombre de asesoria" autofocus>
+               		   <input type="text" class="form-control" autocomplete="off"name="Nombre Asesoria" placeholder="Nombre de asesoria" autofocus>
                 	</div >
-                	<div class="form-group">
-                		<textarea name="Descripcion" rows="2" class="form-control" placeholder="Descripcion"></textarea>
-                	</div>
+                	
 					<div class="form-group">
 						Tutor
 					</div>
 					<div class="form-group">
-                		 <input type="Name" name="Tutor" class="form-control" readonly />
-                	</div>
+                     <select type="text" name="Asesor" class="form-control">
+                    <option class="form-control" value="" disabled selected>Seleccione una asesor</option>
+                                          {{#each asesor}}
+                                                <option value="{{ id_Usuario}}" >{{NombredeUsuario}}</option>
+                                                {{/each}}
+                  </select>
+          </div>
+                
                 	<div class="form-group">
-
-                		Selecciona una Categoria
-                	</div>
-                	<div class="form-group">
-               		   <select type="text" name="Carreras" class="form-control">
+               		   <select type="text" name="Secciones" class="form-control">
       							{{#each secciones}}
 
-      							<option >{{Nombre}}</option>
+      							<option >Seleccione una Materia</option>
 
       							<option value="{{id_Seccion}}">{{Nombre}}</option>
 
       							{{/each}}
       						</select>
-                	</div>
+          </div>
                 	<div class="form-group">
                 		  Fecha Inicio
                 	</div>

@@ -78,10 +78,10 @@ create table Asesorias_Alumnos(
 );
 
 create table solicitudes_asesoria(
-  id_Solicitudes int(11)  auto_increment not null,
+    id_Solicitudes int(11)  auto_increment not null,
     usuario int(11) not null,
     Materia int(11) not null,
-  Hora_inicio time,
+    Hora_inicio time,
     Hora_fin time,
     fechaCreacion datetime default current_timestamp,
     fechaRespuesta datetime,

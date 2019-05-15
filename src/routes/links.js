@@ -67,13 +67,14 @@ router.post('/secciones', islogged, async (req,res) =>
 	res.redirect('/links/secciones');
 });
 
-router.get('/asesorias', islogged, async (req,res)=>
+
+router.get('/asesorias', islogged,async(req,res)=>
 {
-  const secciones=await pool.query('Select * from Secciones');
-  res.render('links/asesorias',{ secciones ,user: req.user});
+  const secciones=await pool.query('Select * from asesorias');
+  const asesor = await pool.query("Select * from usuarios where tipo='Asesor'");
+  res.render('links/asesorias',{ secciones ,user: req.user,asesor});
+
 });
-
-
 router.get('/', islogged, async (req,res)=>
 {
   const carreras=await pool.query('Select * from CARRERAS');
@@ -81,25 +82,51 @@ router.get('/', islogged, async (req,res)=>
 });
 
 
+// Lista Asesorias
 router.get('/listAsesorias', islogged, async (req,res)=>
 {
-	
+
   const Asesorias=await pool.query('Select * from asesorias');
+
   res.render('links/listAsesorias',{ Asesorias ,user: req.user});
 });
 
-router.get('/asesorias', islogged,async(req,res)=>
+//Inscribirte Asesorias
+router.post('/listAsesorias', islogged, async (req,res) =>
 {
-  const secciones=await pool.query('Select * from asesorias');
-  res.render('links/listAsesorias',{ secciones ,user: req.user});
+	const{id_Asesoria}=req.body
+	const id_Alumno= req.user.id_Usuario;
+	const newIncribirse ={
+		Asesoria: id_Asesoria,
+		Alumno:id_Alumno
+	};
+
+	await pool.query('INSERT INTO asesorias_alumnos SET ?',[newIncribirse]);
+	req.flash('success','Inscripcion saved successfully');
+	res.redirect('/profile');
 });
+
+
+
 
 router.post('/asesorias', islogged, async (req,res)=>
 {
-	const{Nombre}=req.body
+	const{Nombre}=req.body;
+	const {Secciones}= req.body;
+	const {Horario_Inicio}= req.body;
+	const {Horario_Fin}= req.body;
+	const {Asesor}= req.body;
+	const Estado = 'Pendiente';
+	const {Descripcion}= req.body;
 	console.log(req.body)
 	const newAsesoria ={
-		Nombre
+		Nombre,
+		Secciones,
+        Horario_Inicio,
+        Horario_Fin,
+        Asesor,
+        Estado,
+        Descripcion
 	};
 	res.render('/asesorias')
 });
