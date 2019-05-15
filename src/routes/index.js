@@ -1,10 +1,19 @@
 const express = require('express');
 const router=express.Router();
 
-router.get('/',(req,res) => {
-     res.redirect('/login')
-     // res.send('Hello Word');
-});
+//Data Base
+const pool =require('../database');
 
+router.get('/',islogged, async (req,res) => {
+     const carreras = await pool.query('Select * from CARRERAS');
+     res.render('index',{title: "Inicio", carreras})  
+});
+function islogged(req,res,next){
+     if(!req.isAuthenticated()){
+         return next();
+     }else{
+         return res.redirect('/profile');
+     }
+ }
 
 module.exports= router;

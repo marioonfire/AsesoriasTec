@@ -1,30 +1,23 @@
-html {
-    font-family: "Roboto","Helvetica","Arial",sans-serif;
-}
+
 /* 
 nav{
     background-image: url("http://tectijuana.edu.mx/wp-content/uploads/2018/12/headernuevo2018-1.jpg");
 } */
 
-/* COLOR VERDE DEL TITULO  */
-.Rheader{
-    color:white;
-}
-
 /* CONTROL DEL MENU cuando se ve y cuando no */
-body > header, body > main {
+/* body > header, body > main {
     padding-left: 225px;
-}
+} */
 
-.sidenav{
+/* .sidenav{
     width: 225px !important;
-}
+} */
 
 /* NAV Style */
-nav {
+/* nav {
     height: 110px !important;
-}
-nav > .container{
+} */
+/* nav > .container{
     width: 100% !important;
     padding-top: 22px;
 }
@@ -33,26 +26,23 @@ nav  h1 {
 }
 nav .header {
     margin: 0 !important;
-}
-.sidenav > li a, .sidenav > li i{
+} */
+/* .sidenav > li a, .sidenav > li i{
     color: rgb(88, 179, 78);
-}
+} */
 
 
 /* IMAGEN NAV */
-#logo-container{
+/* #logo-container{
     height: auto!important;
 }
 #logo-container > img {
     margin-left: calc(50% - 70px);
-}
+} */
 /* NAV style */
 /* BORDES DELGADOS */
-.top-nav{
+/* .top-nav{
     height: 110px;
-    /* -webkit-box-shadow: none; */
-    /* box-shadow: none; */
-    /* border-bottom: 1px solid rgba(0,0,0,0.14); */
     background-color: transparent;
 }
 .sidenav{
@@ -60,8 +50,8 @@ nav .header {
     -webkit-box-shadow: none;
     box-shadow: none;
     border-right: 1px solid rgba(0,0,0,0.14);
-}
-.iconMenu{
+} */
+/* .iconMenu{
     position: absolute;
     text-align: center;
     height: 48px;
@@ -79,7 +69,7 @@ nav .header {
 
 main > .container{
     width: 100%;
-}
+} */
 
 /* COLOR DEL INPUT */
 input:not([type]), input[type="text"]:not(.browser-default), input[type="password"]:not(.browser-default), input[type="email"]:not(.browser-default), input[type="url"]:not(.browser-default), input[type="time"]:not(.browser-default), input[type="date"]:not(.browser-default), input[type="datetime"]:not(.browser-default), input[type="datetime-local"]:not(.browser-default), input[type="tel"]:not(.browser-default), input[type="number"]:not(.browser-default), input[type="search"]:not(.browser-default), textarea.materialize-textarea {
@@ -117,13 +107,13 @@ input[type=search]:not(.browser-default):focus:not([readonly])+label,
 textarea.materialize-textarea:focus:not([readonly])+label {
 color:#4CAF50;
 }
-.dropdown-content li > a, .dropdown-content li > span {
+/* .dropdown-content li > a, .dropdown-content li > span {
 font-size: 16px;
 color: #4CAF50;
 display: block;
 line-height: 22px;
 padding: 14px 16px;
-}
+} */
 
 /* COLOR DEL INPUT */
 
@@ -134,13 +124,13 @@ padding: 14px 16px;
 
 
 /* SALTOS */
-@media (max-width: 992px ){
+/* @media (max-width: 992px ){ */
     /* quita el margen cuando el menu aparece */
-    body > header, body > main {
+    /* body > header, body > main {
         padding-left: 0px;
     }
 
     body, header{
         text-align: center;
     }
-}
+} */

@@ -1,13 +1,27 @@
-<form action="/login" method="POST">
-	<div class="input-field">
-	   <input type="number" id="Matricula" name="Matricula" class="form-control" autofocus>
-	   <label for="Matricula">Matricula:</label>
+<br>
+<div class="container white z-depth-1">
+	<h3 class="center-align">Iniciar sesion</h3>
+	<br>
+	<div class="row">
+		<form action="/login" method="POST">
+			<div class="col s12 m6 offset-m3">
+				<div class="input-field">
+				   <input type="text" id="Matricula" name="Matricula" class="form-control" autofocus>
+				   <label for="Matricula">Matricula:</label>
+				</div>
+			</div>
+			<div class="col s12 m6 offset-m3">
+				<div class="input-field">
+					<input type="password" name="Contraseña" id="contraseña" class="form-control">
+					<label for="contraseña">Contraseña:</label>
+				</div>
+			</div>
+			<div class="col s12 m6 offset-m3">
+				<button class="btn btn-success btn-block col s12 m6 offset-m3 green">Entrar</button>
+			</div>
+			</div>
+		</form>
+		<br>
 	</div>
-	<div class="input-field">
-		<input type="password" name="Contraseña" id="contraseña" class="form-control">
-		<label for="contraseña">Contraseña:</label>
-	</div>
-		<button class="btn btn-success btn-block col s12 m6 offset-m3 green">Entrar</button>
-	</div>
-</form>
-
+	<br>
+</div>

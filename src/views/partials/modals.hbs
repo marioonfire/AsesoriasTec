@@ -1,9 +1,31 @@
-<br>
-<div class="container white z-depth-1">
-	<h3 class="center-align">Registrate</h3>
-	<br>
-      <div class="row">
-            <form action="/signup" method="POST">
+<!-- MODALES  -->
+<!-- Modal Iniciar sesion -->
+<div id="modalLogin" class="modal">
+    <form action="/login" method="POST">
+        <div class="modal-content">
+            <h4 class="center black-text">Iniciar sesion</h4>
+            <br>
+            <div class="input-field">
+               <input type="number" id="Matricula" name="Matricula" class="form-control" autofocus required>
+               <label for="Matricula">Matricula:</label>
+            </div>
+            <div class="input-field">
+                <input type="password" name="Contraseña" id="contraseña" class="form-control">
+                <label for="contraseña">Contraseña:</label>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="waves-effect waves-green btn-flat">Aceptar</button>
+        </div>
+    </form>
+</div>
+
+<!-- Modal Iniciar sesion -->
+<div id="modalSignUp" class="modal">
+    <form >
+        <div class="modal-content">
+            <h4 class="center black-text">Registrate</h4>
+             <form action="/signup" method="POST">
                   <div class="input-field col s12 m6 offset-m3">
                         <input type="number" name="Matricula" id="Matricula" autocomplete="off" autofocus="" required="">
                         <label for="Matricula">Matricula</label>
@@ -30,14 +52,10 @@
                         <input type="email" name="Correo" id="correo" autocomplete="off" required="">
                         <label for="correo">Correo</label>
                   </div>
-                  <div class="col s12 m6 offset-m3"> 
-                        <button class="btn btn-success btn-block col s12 m6 offset-m3 green">
-                              Enviar
-                        </button>
-                  </div>
-            </form>
-            <br>
-      </div>
-      <br>
+        </div>
+        <div class="modal-footer">
+            <button class="waves-effect waves-green btn-flat">Aceptar</button>
+        </div>
+    </form>
 </div>
-<br>
+<!-- MODALES  -->

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv= "X-UA-Compatible" content="ie=edge">
-    <title>Asesorias Tec</title>
+    <title>Asesorias Tec - {{title}}</title>
     {{!-- GOOGLE FONTS --}}
     <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
 
@@ -21,25 +21,28 @@
      <link rel="stylesheet" href="/css/styles.css">
 
 </head>
-<body class="">
+<body class="grey lighten-3">
       {{> navigation}}
        {{> message }}
       <main>
-        <div class="container">
-          <div class="row">
-            <div class="col s12 m8 offset-m1">
-              {{{ body }}}
-            </div>
-          </div>
-        </div>
+        {{{ body }}}
       </main>
+      {{> footer}}
+      {{> modals}}
      {{!-- SCRIPTS --}}
-     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 <script>
-  $(document).ready(function(){
-    $('.sidenav').sidenav();
-    $('select').formSelect();
+  document.addEventListener('DOMContentLoaded', function() {
+    const options = {};
+    var elems = document.querySelectorAll('.sidenav');
+    var instances = M.Sidenav.init(elems, options);
+    var elemsS = document.querySelectorAll('.slider');
+    var instances = M.Slider.init(elemsS, options);
+    var elemM = document.querySelectorAll('.modal');
+    var instances = M.Modal.init(elemM, options);
+    var elemsSe = document.querySelectorAll('select');
+    var instances = M.FormSelect.init(elemsSe, options);
   });
 </script>
 </body>

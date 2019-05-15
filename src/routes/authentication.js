@@ -15,10 +15,10 @@ router.get('/signup', async (req,res)=>
 
 router.post('/signup', passport.authenticate('local-signup',{
          succesRedirect: '/profile',
-         failureRedirect: '/signup',
+         failureRedirect: '/',
          failureFlash: true
 }), function(req, res, info){
-  res.redirect('/login');
+  res.redirect('/');
 });
 
 
@@ -28,10 +28,10 @@ router.get('/login',inLogged, (req,res)=>{
 
 router.post('/login', passport.authenticate('local-signin',{
     succesRedirect: '/profile',
-    failureRedirect: '/login',
+    failureRedirect: '/',
     failureFlash:true
   }), function(req, res, info){
-      res.redirect('/profile');
+      res.redirect('/');
   }
 );
 
