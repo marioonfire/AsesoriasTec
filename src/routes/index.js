@@ -6,7 +6,7 @@ const pool =require('../database');
 
 router.get('/',islogged, async (req,res) => {
      const carreras = await pool.query('Select * from CARRERAS');
-     res.render('index',{title: "Inicio", carreras})  
+     res.render('index',{title: "Inicio", carreras, user:req.user})  
 });
 function islogged(req,res,next){
      if(!req.isAuthenticated()){
