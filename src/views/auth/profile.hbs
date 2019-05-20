@@ -1,29 +1,81 @@
-<div class="container p-4">
+<div class="container ">
       <div class="row">
-      	<div class="col-md-4 mx-auto">
-      		<div class="card text-center">
-      			<div class="card-header">
-      				<h3>Perfil</h3>
-      			</div>
-
-
-                        <picture>
-                         <img src="/image/profile.jpg">
-                         </picture>
-
-      			<div class="card-body">
-                              {{#usuario}}
-                              <label>{{usuario.matricula}}</label><br>
-                              <label>{{usuario.NombredeUsuario}}</label><br>
-                              <label>{{usuario.Correo}}</label><br>
-      				
-                              {{/usuario}}
+            <div class="row">
+                  <div class="col s12 m8 offset-m2">
+                        <div class="card large" style="height: auto !important;">
+                        <h4 class="center ">Editar perfil</h4>
+                        {{#usuario}}
+                        <div class="divider"></div>
+                              <div class="card-image" style="max-height: 300px !important;">
+                                    <img id="img_back" class="tooltipped" data-position="right" data-tooltip="Cambia la foto de fondo" onclick="changeImage(this)" data-target="#inp_file" src="/uploads/{{usuario.fotoPortada}}">
+                                    <span class="circle card-title tooltipped" data-position="right" data-tooltip="Cambia la foto de perfil"><a onclick="changeImage(this)" data-target="#inp_filePro"><img id="img_pro" width="150" height="150" style="border-radius: 50% !important;" class="circle" src="/uploads/{{usuario.foto}}"></a></span>
+                              </div>
+                              <div class="card-content">
+                                    <form method="POST" enctype="multipart/form-data">
+                                                <input type="file" class="hide" onchange="readURL(this)" id="inp_file" data-target="#img_back" name="imageBack"/>
+                                                <input type="file" class="hide" onchange="readURL(this)" data-target="#img_pro" id="inp_filePro" name="imageProfile"/>
+                                                <div class="input-field">
+                                                      <input value="{{usuario.matricula}}" readonly="">
+                                                      <label class="active">Matricula</label>
+                                                </div>
+                                                <div class="input-field">
+                                                      <input value="{{usuario.NombredeUsuario}}" name="Nombre" required="">
+                                                      <label class="active">Nombre:</label>
+                                                </div>
+                                                <div class="input-field">
+                                                      <select id="carreras" name="carreras">
+                                                      </select>
+                                                      <label>Carrera</label>
+                                                </div>
+                                                <div class="input-field">
+                                                      <input value="{{usuario.Correo}}" name="Correo" required="">
+                                                      <label class="active">Correo</label>
+                                                </div>
+                                          {{/usuario}}
+                                          <div class="col s12 m6 offset-m3">
+                                                <button class="btn waves-effect waves-light green col s12" type="submit" name="action">Guardar<i class="material-icons right">send</i>
+                                                </button>
+                                          </div>
+                                    </form>
+                              </div>
                         </div>
-      			<div class="card-body">
-      				<label for="">Iniciada</label>
-
-      			</div>
-      		</div>
-      	</div>
+                  </div>
+            </div>
       </div>
 </div>
+<script>
+{{#each carreras}}
+      document.getElementById("carreras").innerHTML+= '<option value="{{ id_Carrera}}">{{Nombre}}</option>';
+{{/each}}
+</script>
+{{#usuario}}
+<script>
+      function readURL(input) {
+            console.log(input)
+            if (input.files && input.files[0]) {
+                  var reader = new FileReader();
+                  reader.onload = function (e) {
+                        const inp = $(input).data('target')
+                        console.log(inp)
+                        $(inp).attr('src', e.target.result)
+                  };
+                  reader.readAsDataURL(input.files[0]);
+            }
+      }
+      
+      function changeImage(elm){
+            console.log('click')
+            const target = $(elm).data("target");
+            $(target).click();
+      }
+
+      function selectCarrera(valor){
+            console.log(valor)
+            document.getElementById('carreras').value = valor;
+            var elemsSe = document.querySelectorAll('select');
+            var instances = M.FormSelect.init(elemsSe, options);
+      }
+
+      selectCarrera("{{usuario.Carrera}}")
+</script>
+{{/usuario}}

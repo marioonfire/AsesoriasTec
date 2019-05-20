@@ -29,8 +29,9 @@ passport.use('local-signin', new LocalStrategy({
                 Correo : user.Correo,
                 Tipo: user.Tipo,
                 Kardex: user.Kardex,
-                foto: user.foto
-                }, req.flash("message","Bienvenido "));   
+                foto: user.foto,
+                fotoPortada: user.fotoPortada
+                }, req.flash("success","Bienvenido "));   
         }
         else
         {
@@ -58,7 +59,8 @@ passport.use('local-signup', new LocalStrategy({
          Correo,
          Tipo:Alumno,
          Kardex: null,
-         foto:null,
+         foto:"profile.jpg",
+         fotoPortada: "Paisaje2.png",
          matricula: parseInt(Matricula),
          id_Usuario:null
     };

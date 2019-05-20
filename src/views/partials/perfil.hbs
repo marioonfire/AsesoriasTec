@@ -1,0 +1,47 @@
+<ul id="slide-user" class="sidenav">
+    <li><div class="user-view">
+      <div class="background">
+        <img id="portada" src="https://materializecss.com/images/office.jpg">
+      </div>
+      <a href="#user"><img class="circle" id="perfil" src="https://materializecss.com/images/yuna.jpg"></a>
+      <a href="#name"><span class="white-text name" id="p_name">John Doe</span></a>
+      <a ><span class="white-text" id="p_matricula">John Doe</span></a>
+      <a href="#email"><span class="white-text email" id="p_email">jdandturk@gmail.com</span></a>
+      <a class="btn-floating halfway-fab waves-effect waves-light red hide" id="e_profile" style="height: 40px;"><i class="material-icons">create</i></a>
+      </div>
+    </li>
+    <li><a href="#!"><i class="material-icons">cloud</i>First Link With Icon</a></li>
+    <li><a href="#!">Second Link</a></li>
+    <li><div class="divider"></div></li>
+    <li><a class="subheader">Subheader</a></li>
+    <li><a class="waves-effect" href="#!">Third Link With Waves</a></li>
+</ul>
+
+<script>
+  $('.getInforUser').click(function(e) {
+    e.preventDefault();
+    var id = $(this).data('id');
+    
+    var xhm = new XMLHttpRequest();
+    xhm.open('GET','/user/'+id, true);
+    xhm.addEventListener('load', function(es){
+      const res = JSON.parse(xhm.responseText);
+      if(res.success){
+        console.log(res.Nombre)
+        $('#p_name').text(res.Nombre);
+        $('#p_email').text(res.Email);
+        $('#p_matricula').text(res.Matricula);
+        $('#portada').attr('src','/uploads/' + res.Portada)
+        $('#perfil').attr('src','/uploads/' + res.Perfil)
+        if(res.hide){
+          $('#e_profile').addClass('hide')
+        }else{
+          $('#e_profile').removeClass('hide')
+        }
+      }else{
+        $('#slide-user').sidenav('close');
+      }
+    });
+    xhm.send()
+  });
+</script>

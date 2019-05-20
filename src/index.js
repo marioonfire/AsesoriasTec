@@ -7,6 +7,7 @@ const flash= require('connect-flash');
 const session= require('express-session');
 const MySQLStore= require('express-mysql-session');
 const { database } = require('./keys');
+const multer = require('multer');
 
 //Inicializaciones
 const app =express();
@@ -33,6 +34,7 @@ app.use(session({
 }));
 app.use(flash());
 app.use(morgan('dev'));
+app.use(multer({dest: path.join(__dirname,'./public/uploads/temp')}).fields([{name:'imageBack'},{name: 'imageProfile'}]));
 app.use(express.urlencoded({extended: false}));
 app.use(express.json());
 app.use(passport.initialize());
@@ -49,6 +51,7 @@ app.use((req,res,next) =>{
 //Rutas
 app.use(require('./routes'));
 app.use(require('./routes/authentication'));
+app.use(require('./routes/info'));
 app.use('/links',require('./routes/links'));
 
 //Publicos
