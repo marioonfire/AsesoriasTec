@@ -5,9 +5,11 @@ const router = express.Router();
 const pool =require('../database');
 
 //Peticiones
-router.get('/add', islogged, (req,res) =>
+router.get('/add', islogged, async(req,res) =>
 {
-	res.render('links/add');
+	const Materias= await pool.query('Select * from CARRERAS');
+	console.log(Materias)
+	res.render('links/add', {user: req.user, Materias});
 })
 router.post('/add', async (req,res) =>
 {
@@ -25,8 +27,7 @@ router.post('/add', async (req,res) =>
 //Peticiones
 router.get('/Peticion', islogged, async (req,res)=>
 {
-
-	const Materias=await pool.query('Select * from Secciones');
+	const Materias= await pool.query('Select * from Secciones');
 	res.render('links/Peticion',{Materias,user: req.user});
 })
 
@@ -34,26 +35,33 @@ router.post('/Peticion', islogged, async(req,res)=>
 {
    const usuario=req.user.id_Usuario;
    const  {Secciones}=req.body;
+   const  {titulo}=req.body;
    const {Hora_inicio}= req.body;
+   const {Fecha_inicio}= req.body;
    const {Hora_fin}=req.body;
-   const Estatus= "En espera";
+	 const {Fecha_fin}=req.body;
+	 //const {Asesor: usuario}
+	 const Estatus= "Espera";
+	 
+
+
    const newPeticion={
        usuario,
-       Materia:parseInt(Secciones),
-       Hora_inicio,
-       Hora_fin,
+			 Materia:parseInt(Secciones),
+			 fechaCreacion: Date.now(),
        Estatus
    }
-   await pool.query('INSERT INTO solicitudes_asesoria SET ?',[newPeticion]);
+   await pool.query('INSERT INTO solicitudes_asesor SET ?',[newPeticion]);
 	req.flash('success','Peticion saved successfully');
 	res.redirect('/secciones');
 });
 
 
 //Secciones
-router.get('/secciones', islogged, (req,res) =>
+router.get('/secciones', islogged, async(req,res) =>
 {
-	res.render('links/secciones');
+	const Secciones = await pool.query('Select * from Secciones');
+	res.render('links/secciones', {user: req.user, Secciones});
 })
 router.post('/secciones', islogged, async (req,res) =>
 {
@@ -61,7 +69,6 @@ router.post('/secciones', islogged, async (req,res) =>
 	const newseccion ={
 		Nombre
 	};
-
 	await pool.query('INSERT INTO Secciones SET ?',[newseccion]);
 	req.flash('success','Link saved successfully');
 	res.redirect('/links/secciones');
@@ -81,13 +88,10 @@ router.get('/', islogged, async (req,res)=>
   res.render('links/listCarreras',{carreras,user: req.user});
 });
 
-
 // Lista Asesorias
 router.get('/listAsesorias', islogged, async (req,res)=>
 {
-
   const Asesorias=await pool.query('Select * from asesorias');
-
   res.render('links/listAsesorias',{ Asesorias ,user: req.user});
 });
 

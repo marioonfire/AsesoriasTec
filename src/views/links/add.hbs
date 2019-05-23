@@ -1,18 +1,23 @@
-<div class="container p-4">
+<div class="container white z-depth-1">
    <div class= "row">
-       <div class ="col-md-4 mx-auto">
-           <div class="card ">
-             <div class="card-body">
-               <form action="/links/add" method="POST">
-               	    <div class="form-group">
-               		   <input type="text" class="form-control" name="Nombre" placeholder="Nombre de la Carrera" autofocus>
-                	</div>
-                		<button class="btn btn-success btn-block">
-                			Guardar
-                		</button>
-                	</div>
-               </form>
-           </div>
-       </div>
-   </div>
+       <div class ="col s12 m4">
+           <h3 class="center">Carreras</h3>
+           <form action="/links/add" method="POST">
+                <div class="form-group">
+                    <input type="text" class="form-control" name="Nombre" placeholder="Nombre de la Carrera" autofocus>
+                </div>
+                <button class="btn green col s12 offset-m3 m6">Agregar</button>
+                <br>
+                <br>
+            </form>
+        </div>
+        <div class="col s12 m7 offset-m1">
+            <h3 class="center">Materias registradas</h3>
+            <ul class="collection with-header">
+                {{#each Materias}}
+                    <li class="collection-item"><div>{{Nombre}}<a href="{{Carrera}}" class="secondary-content"><i class="material-icons">create</i></a></div></li>                
+                {{/each}}
+            </ul>
+        </div>
+    </div>
 </div>

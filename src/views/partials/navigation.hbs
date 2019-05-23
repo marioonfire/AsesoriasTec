@@ -4,10 +4,10 @@
     <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
     <ul class="right hide-on-med-and-down">
       {{#if user}}
-        <li><a href="/">Inicio</a></li>
+        <li><a href="/links/listasesorias">Inicio</a></li>
         <li><a href="#" class="sidenav-trigger getInforUser show-on-large" data-id="{{user.matricula}}" data-target="slide-user">Perfil</a></li>
-        <li><a href="/links/listasesorias">Asesorias</a></li>
-        <li><a href="/links/Peticion">Solicitudes</a></li>
+        <li><a href="/links/Peticion">Solicitar asesoria</a></li>
+        <li><a class="dropdown-trigger" data-target="dropInfor">Administrar<i class="material-icons right">arrow_drop_down</i></a></li>
         <li><a href="/logout">Salir</a></li>
         {{else}}
         <li><a class="modal-trigger" href="#modalLogin">Iniciar sesion</a></li>
@@ -17,12 +17,30 @@
     </div>
   </nav>
 
+  <ul id="dropInfor" class="dropdown-content">
+  <li><a href="/">Materias</a></li>
+  <li><a href="/links/secciones">Secciones</a></li>
+  <li><a href="/links/add">Carreras</a></li>
+</ul>
+
   <ul class="sidenav" id="mobile-demo">
     {{#if user}}
       <li><a href="/">Inicio<i class="material-icons left">home</i></a></li>
       <li><a data-target="slide-user" class="sidenav-trigger getInforUser" data-id="{{user.matricula}}" >Perfil<i class="material-icons left">face</i></a></li>
-      <li><a href="/links/listasesorias">Asesorias<i class="material-icons left">group</i></a></li>
-      <li><a href="/links/Peticion">Solicitudes<i class="material-icons left">group_add</i></a></li>
+      <li><a href="/links/Peticion">Solicitar asesora<i class="material-icons left">group_add</i></a></li>
+      <ul class="collapsible">
+        <li>
+        <div class="collapsible-header"><i class="material-icons">build</i>Administrar</div>
+        <div class="collapsible-body">
+            <ul>
+              <li><a href="/">Materias</a></li>
+              <li><a href="/links/secciones">Secciones</a></li>
+              <li><a href="/links/add">Carreras</a></li>
+            </ul>
+        </div>
+      </li>
+    </ul>
+        
       <li><a href="/logout">Salir<i class="material-icons left">exit_to_app</i></a></li>
       {{else}}
       <li><a class="modal-trigger" href="#modalLogin">Iniciar sesion</a></li>
