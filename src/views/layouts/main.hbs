@@ -22,7 +22,10 @@
             
      {{!-- STYLES --}}
      <link rel="stylesheet" href="/css/styles.css">
-
+     <script src="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+    {{!-- MORRIS --}}
+    <link rel="stylesheet" href="/css/morris.css">
 </head>
 <body class="grey lighten-3">
       {{> navigation}}
@@ -55,5 +58,8 @@
     var instances = M.Collapsible.init(elems, options);
   });
 </script>
+
+<script src="/css/morris.min.js" charset="UTF-8"></script>
+<script src="/css/graficas.js" charset="utf-8"></script>
 </body>
 </html>

@@ -142,6 +142,30 @@ router.get('/', islogged, async (req,res)=>
   res.render('links/listCarreras',{ carreras ,user: req.user});
 });
 
+router.get('/AsesoriasCursadas', islogged, async(req,res)=>
+{
+  const asesoriascursadas = await pool.query(`select a.nombre as Nombre_Asesoria, a.seccion as Seccion, m.nombredeusuario as Asesor ,s.nombre as Materia,a.Horario_Inicio, a.Horario_Fin, a.descripcion from asesorias a join usuarios m on a.asesor= m.id_Usuario  join secciones s on a.seccion = s.id_seccion join asesorias_alumnos al on a.id_asesoria = al.asesoria where al.alumno = ${req.user.id_Usuario}`);
+  res.render('links/Cursadas',{asesoriascursadas:asesoriascursadas, user:req.user});
+});
+
+router.get('/AsesoriasDisponibles', islogged, async(req,res)=>
+{
+  const asesoriascursadas = await pool.query(`select a.nombre as Nombre_Asesoria, a.seccion as Seccion, m.nombredeusuario as Asesor ,s.nombre as Materia,a.Horario_Inicio, a.Horario_Fin, a.descripcion from asesorias a join usuarios m on a.asesor= m.id_Usuario  join secciones s on a.seccion = s.id_seccion join asesorias_alumnos al on a.id_asesoria = al.asesoria where al.alumno != ${req.user.id_Usuario}`);
+  res.render('links/Disponibles',{asesoriascursadas:asesoriascursadas, user:req.user});
+});
+
+
+
+//Graficas
+
+router.get('/Grafica', islogged, async (req,res)=>
+{
+ const Asesorias=await pool.query('Select Count(id_Asesoria) from asesorias');
+ console.log(Asesorias);
+	res.render('links/Grafica',Asesorias,{user: req.user});
+});
+
+
 
 function islogged(req,res,next){
     if(req.isAuthenticated()){
