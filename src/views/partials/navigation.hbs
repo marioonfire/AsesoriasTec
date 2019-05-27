@@ -7,6 +7,8 @@
         <li><a href="/links/listasesorias">Inicio</a></li>
         <li><a href="#" class="sidenav-trigger getInforUser show-on-large" data-id="{{user.matricula}}" data-target="slide-user">Perfil</a></li>
         <li><a href="/links/Peticion">Solicitar asesoria</a></li>
+        <li><a href="/links/AsesoriasCursadas">Asesorias Cursadas</a></li>
+        <li><a href="/links/AsesoriasDisponibles">Asesorias Disponibles</a></li>
         <li><a class="dropdown-trigger" data-target="dropInfor">Administrar<i class="material-icons right">arrow_drop_down</i></a></li>
         <li><a href="/logout">Salir</a></li>
         {{else}}
@@ -33,6 +35,7 @@
         <div class="collapsible-header"><i class="material-icons">build</i>Administrar</div>
         <div class="collapsible-body">
             <ul>
+              
               <li><a href="/">Materias</a></li>
               <li><a href="/links/secciones">Secciones</a></li>
               <li><a href="/links/add">Carreras</a></li>
@@ -42,8 +45,12 @@
     </ul>
         
       <li><a href="/logout">Salir<i class="material-icons left">exit_to_app</i></a></li>
-      {{else}}
+
+
+    {{else}}
       <li><a class="modal-trigger" href="#modalLogin">Iniciar sesion</a></li>
         <li><a class="modal-trigger" href="#modalSignUp">Registrarse</a></li>
     {{/if}}
+    
+
   </ul>
