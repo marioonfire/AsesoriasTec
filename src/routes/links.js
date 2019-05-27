@@ -161,7 +161,7 @@ router.get('/Grafica', islogged, async (req,res)=>
 {
  const Asesorias=await pool.query('Select Count(id_Asesoria) from asesorias');
  console.log(Asesorias);
-	res.render('links/Grafica',Asesorias,{user: req.user});
+	res.render('links/Grafica',{Asesorias:Asesorias,user: req.user});
 });
 
 
