@@ -33,7 +33,8 @@ router.get('/Peticion', islogged, async (req,res)=>
 
 router.post('/Peticion', islogged, async(req,res)=>
 {
-   const usuario=req.user.id_Usuario;
+	 const usuario=req.user.id_Usuario;
+	 console.log(req.body)
    const  {Secciones}=req.body;
    const  {titulo}=req.body;
    const {Hora_inicio}= req.body;
@@ -45,13 +46,13 @@ router.post('/Peticion', islogged, async(req,res)=>
 	 
 
 
-   const newPeticion={
-       usuario,
-			 Materia:parseInt(Secciones),
-			 fechaCreacion: Date.now(),
-       Estatus
-   }
-   await pool.query('INSERT INTO solicitudes_asesor SET ?',[newPeticion]);
+  //  const newPeticion={
+  //      usuario,
+	// 		 Materia:parseInt(Secciones),
+	// 		 fechaCreacion: Date.now(),
+  //      Estatus
+  //  }
+  //  await pool.query('INSERT INTO solicitudes_asesor SET ?',[newPeticion]);
 	req.flash('success','Peticion saved successfully');
 	res.redirect('/secciones');
 });
