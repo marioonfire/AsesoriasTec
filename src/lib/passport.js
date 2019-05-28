@@ -35,6 +35,7 @@ passport.use('local-signin', new LocalStrategy({
                     fotoPortada: user.fotoPortada,
                     Admin : true
                     };
+                    // console.log(ret)
             }else if(user.Tipo == "Alumno"){
                 ret = {
                     id_Usuario: user.id_Usuario,
@@ -48,7 +49,7 @@ passport.use('local-signin', new LocalStrategy({
                     fotoPortada: user.fotoPortada,
                     Alumno: true
                 }
-
+                // console.log(ret)
             }else if(user.Tipo == "Asesor"){
                 ret = {
                     id_Usuario: user.id_Usuario,
@@ -77,7 +78,8 @@ passport.use('local-signin', new LocalStrategy({
                     Asesor: true
                 };
             }
-            console.log(ret)
+                // console.log(ret)
+                // req.user = ret
             done(null,ret, req.flash("success","Bienvenido "));
         }
         else

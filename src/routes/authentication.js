@@ -39,6 +39,7 @@ router.post('/login', passport.authenticate('local-signin',{
 
 
 router.get('/profile', islogged, async(req,res)=>{
+  console.log(req.user)
   const usuario =  {usuario:req.user}
   const carreras=await pool.query('Select * from CARRERAS');
 	res.render('auth/profile',{user:req.user,usuario, title:"Editar perfil", carreras});
@@ -124,6 +125,64 @@ function inLogged(req,res,next){
   if(!req.isAuthenticated()){
     return next();
   }else{
+    var ret ={};    
+    if(user.Tipo == "Admin"){
+            ret = {
+            id_Usuario: user.id_Usuario,
+            matricula: user.matricula,
+            Contraseña: user.Contraseña,
+            Carrera: user.Carrera,
+            Correo : user.Correo,
+            Tipo: user.Tipo,
+            Kardex: user.Kardex,
+            foto: user.foto,
+            fotoPortada: user.fotoPortada,
+            Admin : true
+            };
+            // console.log(ret)
+    }else if(user.Tipo == "Alumno"){
+        ret = {
+            id_Usuario: user.id_Usuario,
+            matricula: user.matricula,
+            Contraseña: user.Contraseña,
+            Carrera: user.Carrera,
+            Correo : user.Correo,
+            Tipo: user.Tipo,
+            Kardex: user.Kardex,
+            foto: user.foto,
+            fotoPortada: user.fotoPortada,
+            Alumno: true
+        }
+        // console.log(ret)
+    }else if(user.Tipo == "Asesor"){
+        ret = {
+            id_Usuario: user.id_Usuario,
+            matricula: user.matricula,
+            Contraseña: user.Contraseña,
+            Carrera: user.Carrera,
+            Correo : user.Correo,
+            Tipo: user.Tipo,
+            Kardex: user.Kardex,
+            foto: user.foto,
+            fotoPortada: user.fotoPortada,
+            Asesor: true
+        };
+    }else if(user.Tipo == "Ambos"){
+        ret = {
+            id_Usuario: user.id_Usuario,
+            matricula: user.matricula,
+            Contraseña: user.Contraseña,
+            Carrera: user.Carrera,
+            Correo : user.Correo,
+            Tipo: user.Tipo,
+            Kardex: user.Kardex,
+            foto: user.foto,
+            fotoPortada: user.fotoPortada,
+            Alumno: true,
+            Asesor: true
+        };
+    }
+    req.user= ret;
     return res.redirect('/profile');
   }
 }
