@@ -179,9 +179,10 @@ router.get('/AsesoriasDisponibles', islogged, async(req,res)=>
 
 router.get('/Grafica', islogged, async (req,res)=>
 {
- const Asesorias=await pool.query('Select Count(id_Asesoria) from asesorias');
- console.log(Asesorias);
-	res.render('links/Grafica',Asesorias,{user: req.user});
+ const Asesorias=await pool.query('select s.nombre as Nombre_Asesoria, Count(a.id_asesoria) as Cantidad from asesorias a join secciones s on a.seccion=s.id_seccion group by s.id_seccion');
+
+	res.render('links/Grafica',{Asesorias:Asesorias,user: req.user});
+	
 });
 
 
