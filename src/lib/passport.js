@@ -21,17 +21,64 @@ passport.use('local-signin', new LocalStrategy({
         if( await helpers.matchPassword(Contraseña,user.Contraseña)){
             // console.log(user.matricula)
             // console.log('s')
-            done(null,{
-                id_Usuario: user.id_Usuario,
-                matricula: user.matricula,
-                Contraseña: user.Contraseña,
-                Carrera: user.Carrera,
-                Correo : user.Correo,
-                Tipo: user.Tipo,
-                Kardex: user.Kardex,
-                foto: user.foto,
-                fotoPortada: user.fotoPortada
-                }, req.flash("success","Bienvenido "));   
+            var ret ={};    
+            if(user.Tipo == "Admin"){
+                    ret = {
+                    id_Usuario: user.id_Usuario,
+                    matricula: user.matricula,
+                    Contraseña: user.Contraseña,
+                    Carrera: user.Carrera,
+                    Correo : user.Correo,
+                    Tipo: user.Tipo,
+                    Kardex: user.Kardex,
+                    foto: user.foto,
+                    fotoPortada: user.fotoPortada,
+                    Admin : true
+                    };
+            }else if(user.Tipo == "Alumno"){
+                ret = {
+                    id_Usuario: user.id_Usuario,
+                    matricula: user.matricula,
+                    Contraseña: user.Contraseña,
+                    Carrera: user.Carrera,
+                    Correo : user.Correo,
+                    Tipo: user.Tipo,
+                    Kardex: user.Kardex,
+                    foto: user.foto,
+                    fotoPortada: user.fotoPortada,
+                    Alumno: true
+                }
+
+            }else if(user.Tipo == "Asesor"){
+                ret = {
+                    id_Usuario: user.id_Usuario,
+                    matricula: user.matricula,
+                    Contraseña: user.Contraseña,
+                    Carrera: user.Carrera,
+                    Correo : user.Correo,
+                    Tipo: user.Tipo,
+                    Kardex: user.Kardex,
+                    foto: user.foto,
+                    fotoPortada: user.fotoPortada,
+                    Asesor: true
+                };
+            }else if(user.Tipo == "Ambos"){
+                ret = {
+                    id_Usuario: user.id_Usuario,
+                    matricula: user.matricula,
+                    Contraseña: user.Contraseña,
+                    Carrera: user.Carrera,
+                    Correo : user.Correo,
+                    Tipo: user.Tipo,
+                    Kardex: user.Kardex,
+                    foto: user.foto,
+                    fotoPortada: user.fotoPortada,
+                    Alumno: true,
+                    Asesor: true
+                };
+            }
+            console.log(ret)
+            done(null,ret, req.flash("success","Bienvenido "));
         }
         else
         {
@@ -57,7 +104,7 @@ passport.use('local-signup', new LocalStrategy({
          Contraseña,
          Carrera:  parseInt(Carreras),
          Correo,
-         Tipo:Alumno,
+         Tipo:req.body.Tipo,
          Kardex: null,
          foto:"profile.jpg",
          fotoPortada: "Paisaje2.png",

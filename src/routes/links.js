@@ -37,24 +37,43 @@ router.post('/Peticion', islogged, async(req,res)=>
 	 console.log(req.body)
    const  {Secciones}=req.body;
    const  {titulo}=req.body;
+   const  {descripcion}=req.body;
    const {Hora_inicio}= req.body;
    const {Fecha_inicio}= req.body;
    const {Hora_fin}=req.body;
 	 const {Fecha_fin}=req.body;
 	 //const {Asesor: usuario}
-	 const Estatus= "Espera";
+	 const Estado= "Espera";
 	 
 
 
-  //  const newPeticion={
-  //      usuario,
-	// 		 Materia:parseInt(Secciones),
-	// 		 fechaCreacion: Date.now(),
-  //      Estatus
-  //  }
-  //  await pool.query('INSERT INTO solicitudes_asesor SET ?',[newPeticion]);
-	req.flash('success','Peticion saved successfully');
-	res.redirect('/secciones');
+  const newPeticion={
+		Nombre: titulo,
+		Fecha_inicio,
+		Fecha_fin,
+		Horario_Inicio: Hora_inicio,
+		Horario_Fin: Hora_fin,
+		Descripcion: descripcion,
+		Seccion:parseInt(Secciones),
+  	Estado:Estado
+	}
+
+	var newSolicitud={
+		usuario,
+		asesoria: undefined,
+		fechaCreacion: Date.now(),
+		fechaRespuesta: null,
+		estatus: "Pendiente"
+	}
+	const result = await pool.query('INSERT INTO Asesorias SET ?',[newPeticion]);
+	console.log(result.insertId);
+	console.log(result)
+	newSolicitud.asesoria = result.insertId;
+
+	const result2 = await pool.query('INSERT INTO solicitudes_asesor SET ?',[newSolicitud]);
+	 
+	req.flash('success','Solicitud creada algo bien');
+	res.redirect('/');
 });
 
 

@@ -4,14 +4,28 @@
     <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
     <ul class="right hide-on-med-and-down">
       {{#if user}}
-        <li><a href="/links/listasesorias">Inicio</a></li>
-        <li><a href="#" class="sidenav-trigger getInforUser show-on-large" data-id="{{user.matricula}}" data-target="slide-user">Perfil</a></li>
-        <li><a href="/links/Peticion">Solicitar asesoria</a></li>
-        <li><a href="/links/AsesoriasCursadas">Asesorias Cursadas</a></li>
-        <li><a href="/links/AsesoriasDisponibles">Asesorias Disponibles</a></li>
-        <li><a class="dropdown-trigger" data-target="dropInfor">Administrar<i class="material-icons right">arrow_drop_down</i></a></li>
-        <li><a href="/logout">Salir</a></li>
+        {{#if user.Admin}}
+          <li><a href="/links/listasesorias">Inicio</a></li>
+          <li><a href="#" class="sidenav-trigger getInforUser show-on-large" data-id="{{user.matricula}}" data-target="slide-user">Perfil</a></li>
+          <li><a href="/links/Peticion">Solicitar asesoria</a></li>
+          <li><a href="/links/AsesoriasCursadas">Asesorias Cursadas</a></li>
+          <li><a href="/links/AsesoriasDisponibles">Asesorias Disponibles</a></li>
+          <li><a class="dropdown-trigger" data-target="dropInfor">Administrar<i class="material-icons right">arrow_drop_down</i></a></li>
         {{else}}
+          {{#if user.Alumno}}
+            <li><a href="/links/listasesorias">Inicio</a></li>
+            <li><a href="#" class="sidenav-trigger getInforUser show-on-large" data-id="{{user.matricula}}" data-target="slide-user">Perfil</a></li>
+            <li><a href="/links/Peticion">Solicitar asesoria</a></li>
+            <li><a href="/links/AsesoriasCursadas">Asesorias Cursadas</a></li>
+          <li><a href="/logout">Salir</a></li>
+          {{/if}}
+          {{#if user.Asesor}}
+            <li><a href="/links/listasesorias">Inicio</a></li>
+            <li><a href="#" class="sidenav-trigger getInforUser show-on-large" data-id="{{user.matricula}}" data-target="slide-user">Perfil</a></li>
+          {{/if}}
+          <li><a href="/links/Peticion">Solicitar asesoria</a></li>
+        {{/if}}
+      {{else}}
         <li><a class="modal-trigger" href="#modalLogin">Iniciar sesion</a></li>
         <li><a class="modal-trigger" href="#modalSignUp">Registrarse</a></li>
       {{/if}}
