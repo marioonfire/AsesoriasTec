@@ -7,20 +7,24 @@
         {{#ifCond user.Tipo '==' "Admin" }}
           <li><a href="/links/listasesorias">Inicio</a></li>
           <li><a href="#" class="sidenav-trigger getInforUser show-on-large" data-id="{{user.matricula}}" data-target="slide-user">Perfil</a></li>
-          <li><a href="/links/Peticion">Solicitar asesoria</a></li>
-          <li><a href="/links/AsesoriasCursadas">Asesorias Cursadas</a></li>
-          <li><a href="/links/AsesoriasDisponibles">Asesorias Disponibles</a></li>
+          <li><a href="/links/Solicitudes">Solicitudes</a></li>
+          <li><a href="/links/listasesorias">Asesorias</a></li>
+          <li><a href="/links/AsesoriasDisponibles">Asesores</a></li>
+          <li><a href="/links/Grafica">Graficas</a></li>
           <li><a class="dropdown-trigger" data-target="dropInfor">Administrar<i class="material-icons right">arrow_drop_down</i></a></li>
         {{/ifCond}}
         {{#ifCond user.Tipo '==' "Alumno" }}
             <li><a href="/links/listasesorias">Inicio</a></li>
             <li><a href="#" class="sidenav-trigger getInforUser show-on-large" data-id="{{user.matricula}}" data-target="slide-user">Perfil</a></li>
             <li><a href="/links/Peticion">Solicitar asesoria</a></li>
-            <li><a href="/links/AsesoriasCursadas">Asesorias Cursadas</a></li>
+            <li><a href="/links/AsesoriasCursadas">Mis Asesorias</a></li>
+            <li><a href="/links/AsesoriasDisponibles">Asesorias Disponibles</a></li>
         {{/ifCond}}
         {{#ifCond user.Tipo '==' "Asesor" }}
             <li><a href="/links/listasesorias">Inicio</a></li>
             <li><a href="#" class="sidenav-trigger getInforUser show-on-large" data-id="{{user.matricula}}" data-target="slide-user">Perfil</a></li>
+            <li><a href="/links/AsesoriasAsesor">Asesorias Asignadas</a></li>
+            <li><a href="/links/AsesoriasDisponibles">Asesorias Disponibles</a></li>
             <li><a href="/links/Peticion">Solicitar asesoria</a></li>
           {{/ifCond}}
           <li><a href="/logout">Salir</a></li>

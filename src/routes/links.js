@@ -175,6 +175,32 @@ router.get('/AsesoriasDisponibles', islogged, async(req,res)=>
 
 
 
+
+//Asesor
+router.get('/AsesoriasAsesor', islogged, async(req,res)=>
+{
+  const AsesoriasAsesor = await pool.query(`select a.nombre as Nombre_Asesoria, a.seccion as Seccion, m.nombredeusuario as Asesor ,s.nombre as Materia,a.Horario_Inicio, a.Horario_Fin, a.descripcion from asesorias a join usuarios m on a.asesor= m.id_Usuario  join secciones s on a.seccion = s.id_seccion  where a.asesor = ${req.user.id_Usuario}`);
+  res.render('links/AsesoriasAsesor',{AsesoriasAsesor :AsesoriasAsesor , user:req.user});
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//Admin
+
+
+
 //Graficas
 
 router.get('/Grafica', islogged, async (req,res)=>
@@ -186,6 +212,14 @@ router.get('/Grafica', islogged, async (req,res)=>
 });
 
 
+//Solicitudes
+router.get('/Solicitudes', islogged, async (req,res)=>
+{
+ const Solicitudes=await pool.query('select u.nombredeusuario as Usuario, m.nombre as Materia, s.Hora_inicio, s.Hora_fin, s.fechaCreacion as Fecha, s.estatus from solicitudes_asesoria s join Usuarios u on s.usuario=u.id_usuario join secciones m on s.Materia = m.id_seccion');
+
+	res.render('links/Solicitudes',{Solicitudes:Solicitudes,user: req.user});
+	
+});
 
 function islogged(req,res,next){
     if(req.isAuthenticated()){
