@@ -3,12 +3,52 @@
 	<hr>
 	<div class="row">
 		<div class="col-md-6">
-			<h2>Grafica de Linea</h2>
+			<h2>Grafica de Asesorias </h2>
 			<hr>
 			<div id="myfirstchart"></div>
 		</div>
 		
 	</div>
+	<script >
+	var dataGraph = []
+</script>
 
+{{#each Asesorias}}
+<script type="text/javascript">
+	dataGraph.push({ 
+		Nombre_asesoria2: "{{Nombre_Asesoria}}",
+		Cantidad: {{Cantidad}}
+	});
+
+</script>
+ {{/each}}
+
+<script >
+	
+new Morris.Bar({
+  // ID of the element in which to draw the chart.
+  element: 'myfirstchart',
+  // Chart data records -- each entry in this array corresponds to a point on
+  // the chart.
+ // data: [
+  //  { year: '2008', value: 20 },
+ //   { year: '2010', value: 5 },
+ //   { year: '2009', value: 10 },
+ //   { year: '2011', value: 5 },
+ //   { year: '2012', value: 20 }
+
+ // ],
+ data: dataGraph,
+  // The name of the data record attribute that contains x-values.
+  xkey: 'Nombre_asesoria2',
+  // A list of names of data record attributes that contain y-values.
+  ykeys: ['Cantidad'],
+  // Labels for the ykeys -- will be displayed when you hover over the
+  // chart.
+  labels: ['Value'],
+  resize: true
+});
+
+</script>
 </div>
 
