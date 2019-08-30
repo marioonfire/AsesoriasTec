@@ -8,9 +8,9 @@ const pool =require('../database');
 router.get('/add', islogged, async(req,res) =>
 {
 	const Materias= await pool.query('Select * from CARRERAS');
-	console.log(Materias)
+	
 	res.render('links/add', {user: req.user, Materias});
-})
+});
 router.post('/add', async (req,res) =>
 {
 	const{Nombre}=req.body;
@@ -221,6 +221,12 @@ router.get('/Solicitudes', islogged, async (req,res)=>
 	
 });
 
+
+router.get('/Asesores', islogged, async(req,res)=>{
+     const Asesores=await pool.query("select u.matricula, u.nombredeusuario as Nombre,u.correo as Correo, c.nombre as Carrera, u.foto as Foto from usuarios u join carreras c on u.carrera=c.id_carrera where tipo = 'Asesor'");
+	res.render('links/Asesores',{Asesores,user: req.user});
+}); 
+
 function islogged(req,res,next){
     if(req.isAuthenticated()){
         return next();
@@ -228,6 +234,9 @@ function islogged(req,res,next){
         return res.redirect('/login');
     }
 }
+
+
+
 
 
 

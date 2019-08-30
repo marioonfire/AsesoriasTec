@@ -54,7 +54,7 @@ router.post('/profile', islogged, async(req,res)=>{
     
   }
   const saveImage = async (file) => {
-
+    console.log(file);
     var correcto = true;
     const imgUrl = randomNumber();
     const images = await pool.query(`Select * from Usuarios where foto = '${imgUrl}' OR fotoPortada = '${imgUrl}'`);

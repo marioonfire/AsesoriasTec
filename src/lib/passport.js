@@ -18,6 +18,7 @@ passport.use('local-signin', new LocalStrategy({
 
         const user =JSON.parse(JSON.stringify(rows[0]));
         // const ValidPassword = await helpers.matchPassword(Contraseña,user.Contraseña)
+        console.log(user);
         if( await helpers.matchPassword(Contraseña,user.Contraseña)){
             // console.log(user.matricula)
             // console.log('s')
@@ -126,5 +127,5 @@ passport.serializeUser((user,done)=>{
 
 passport.deserializeUser(async (id,done) =>{
     const rows = await pool.query("Select * from USUARIOS where matricula = ?",[id.matricula]);
-    done(null, rows[0])
+    done(null, rows[0]);
 });
